@@ -1,0 +1,153 @@
+(function($) {
+    'use strict';
+    var rootArea = %%ROOT_AREA%%;
+    var areaTree = %%AREA_TREE%%;
+
+    var Areapicker = function(element, options) {
+        this.element = $(element).addClass('areapicker-element').hide();
+        $($.proxy(function() {
+            this.init();
+            this.setValue(this.element.val());
+        }, this));
+
+    };
+
+    Areapicker.prototype = {
+        constructor: Areapicker,
+        destroy: function() {
+
+        },
+
+        init: function() {
+            this.element.after(this.buildElements());
+            this.initSelect2();
+            this.fillOptions(this.provinceSelect, rootArea);
+            this.bindEvent();
+        },
+
+        buildElements: function() {
+            this.provinceSelect = $('<select value="" class="form-control select2 areapicker-province" data-placeholder="省/自治区" style="width: 100%;"></select>');
+            this.citySelect = $('<select class="form-control select2 areapicker-city" data-placeholder="市" style="width: 100%;"></select>');
+            this.districtSelect = $('<select class="form-control select2 areapicker-district" data-placeholder="区县/县级市" style="width: 100%;"></select>');
+
+            return $("<div class='row' />").append([this.provinceSelect, this.citySelect, this.districtSelect].map(function(ele){
+                return $('<div class="col-xs-4">').append(ele);
+            }));
+        },
+
+        initSelect2: function() {
+            this.provinceSelect2 = this.provinceSelect.select2({ allowClear: true, language: "zh-CN" });
+            this.citySelect2 = this.citySelect.select2({ allowClear: true, language: "zh-CN" });
+            this.districtSelect2 = this.districtSelect.select2({ allowClear: true, language: "zh-CN" });
+        },
+
+        bindEvent: function() {
+            var self = this;
+            this.provinceSelect.change(function() {
+                self.clearOptions(self.citySelect, self.citySelect2);
+                if (self.provinceSelect.val() || "" != "") {
+                    self.fillOptions(self.citySelect, areaTree[self.provinceSelect.val()]);
+
+                    if (areaTree[self.provinceSelect.val()].length == 1) {
+                        self.citySelect2.val(areaTree[self.provinceSelect.val()][0]["id"]).trigger("change");
+                    }
+                }
+
+                self.saveValue();
+            });
+
+            this.citySelect.change(function() {
+                self.clearOptions(self.districtSelect, self.districtSelect2);
+                if ((self.citySelect.val() || "" != "") && (areaTree[self.citySelect.val()] != undefined)) {
+                    self.fillOptions(self.districtSelect, areaTree[self.citySelect.val()]);
+                }
+
+                self.saveValue();
+            });
+
+            this.districtSelect.change(function() {
+                self.saveValue();
+            });
+        },
+
+        clearOptions: function($select, $select2) {
+            $select.find("option").remove();
+            $select2.val("").trigger("change");
+        },
+
+        fillOptions: function($select, areaArray) {
+            $select.append($("<option></option>"));
+            $.each(areaArray, function(index, area) {
+                $select.append($("<option></option>")
+                         .attr("value", area["id"])
+                         .text(area["name"]));
+            });
+        },
+
+        setValue: function(areaId) {
+            var findAreaInArray = function(areaId, array) {
+                if ((areaId || "") == "") return null;
+                for (var index in array) {
+                    var area = array[index];
+                    if (area["id"] == areaId) {
+                        return area;
+                    }
+                }
+                return null;
+            };
+
+            var findValueInRoot = function(areaId) {
+                return findAreaInArray(areaId, rootArea);
+            };
+
+            var findParentAreaId = function(areaId) {
+                if ((areaId || "") == "") return null;
+                for (var parentId in areaTree) {
+                    if (findAreaInArray(areaId, areaTree[parentId]) != null) {
+                        return parentId;
+                    }
+                }
+                return null;
+            };
+
+            var areaIdPath = [areaId];
+            while(!findValueInRoot(areaIdPath[0])) {
+                var parentId = findParentAreaId(areaIdPath[0]);
+                if (parentId == null) break;
+                areaIdPath.unshift(parentId);
+            }
+
+            areaIdPath.length == 0 || this.provinceSelect2.val(areaIdPath.shift()).trigger("change");
+            areaIdPath.length == 0 || this.citySelect2.val(areaIdPath.shift()).trigger("change");
+            areaIdPath.length == 0 || this.districtSelect2.val(areaIdPath.shift()).trigger("change");
+        },
+
+        saveValue: function() {
+            var province = this.provinceSelect.val() == "" ? null : this.provinceSelect.val();
+            var city = this.citySelect.val() == "" ? null : this.citySelect.val();
+            var district = this.districtSelect.val() == "" ? null : this.districtSelect.val();
+
+            this.element.val(district || city || province);
+        },
+    };
+
+    $.areapicker = Areapicker;
+
+    $.fn.areapicker = function(option) {
+            return this.each(function() {
+                var $this = $(this),
+                    inst = $this.data('areapicker'),
+                    options = ((typeof option === 'object') ? option : {});
+                if ((!inst) && (typeof option !== 'string')) {
+                    $this.data('areapicker', new Areapicker(this, options));
+                } else {
+                    if (typeof option === 'string') {
+                        inst[option].apply(inst, Array.prototype.slice.call(arguments, 1));
+                    }
+                }
+            });
+        };
+
+    $.fn.areapicker.constructor = Areapicker;
+
+})(window.jQuery);

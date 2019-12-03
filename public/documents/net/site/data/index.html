@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>数据同步 - Mik NET接口文档</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6570\u636e\u540c\u6b65";
+    var mkdocs_page_input_path = "data/index.md";
+    var mkdocs_page_url = "/data/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Mik NET接口文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">公共配置</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">数据同步</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">同步终端数据</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">同步地区数据</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">同步餐饮类别数据</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../scans/">扫码</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../shops/">终端</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../goods/">采购订单</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../distributors/">经销商</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../salesmen/">销售员</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../users/">服务员</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../statistics/">统计</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Mik NET接口文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>数据同步</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h4 id="_1">同步终端数据</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/data/link/">/data/link/</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startTime</td>
+<td>string</td>
+<td>是</td>
+<td>开始时间</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>string</td>
+<td>是</td>
+<td>结束时间</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">[
+    {
+        &quot;id&quot;: 213,
+        &quot;name&quot;: &quot;sfdas&quot;,
+        &quot;level&quot;: &quot;A&quot;,
+        &quot;distributor_id&quot;: 1,
+        &quot;area_id&quot;: 500103,
+        &quot;address&quot;: &quot;123123213&quot;,
+        &quot;salesman_id&quot;: 1,
+        &quot;deleted_at&quot;: null,
+        &quot;created_at&quot;: &quot;2018-01-23 15:05:34&quot;,
+        &quot;updated_at&quot;: &quot;2018-01-23 15:05:34&quot;,
+        &quot;logo&quot;: &quot;&quot;,
+        &quot;owner_id&quot;: 0,
+        &quot;contact_person&quot;: &quot;123&quot;,
+        &quot;contact_phone&quot;: &quot;123&quot;,
+        &quot;category_id&quot;: 2,
+        &quot;per_consume&quot;: &quot;999.99&quot;,
+        &quot;source&quot;: 0,
+        &quot;net_shop_id&quot;: null,
+        &quot;data_type&quot;: &quot;add&quot;,       // 数据类型【add：新增 update：更新 delete：删除】
+        &quot;category&quot;: {
+            &quot;id&quot;: 2,
+            &quot;parent_id&quot;: 0,
+            &quot;name&quot;: &quot;小吃&quot;,
+            &quot;level&quot;: 1,
+            &quot;created_at&quot;: &quot;2017-12-15 11:55:17&quot;,
+            &quot;updated_at&quot;: &quot;2017-12-15 11:55:17&quot;,
+            &quot;deleted_at&quot;: null
+        }
+    }
+]
+</code></pre>
+
+<h4 id="_2">同步地区数据</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/data/areas/">/data/areas/</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<pre><code class="json">[{
+    &quot;id&quot;: 110000,
+    &quot;name&quot;: &quot;北京&quot;,
+    &quot;parent_id&quot;: null,
+    &quot;grandparent_id&quot;: null,
+    &quot;display&quot;: &quot;北京&quot;,
+    &quot;deleted_at&quot;: null,
+    &quot;created_at&quot;: &quot;2017-02-01 15:00:30&quot;,
+    &quot;updated_at&quot;: &quot;2017-02-01 15:00:30&quot;
+}]
+</code></pre>
+
+<h4 id="_3">同步餐饮类别数据</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/data/categories/">/data/categories/</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<pre><code class="json">[{
+    &quot;id&quot;: 1,
+    &quot;parent_id&quot;: 0,
+    &quot;name&quot;: &quot;米客米酒&quot;,
+    &quot;level&quot;: 1,
+    &quot;created_at&quot;: &quot;2017-12-15 11:55:14&quot;,
+    &quot;updated_at&quot;: &quot;2017-12-17 13:08:36&quot;,
+    &quot;deleted_at&quot;: null
+}]
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../scans/" class="btn btn-neutral float-right" title="扫码">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="公共配置"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../scans/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

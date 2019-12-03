@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>统计 - Mik NET接口文档</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7edf\u8ba1";
+    var mkdocs_page_input_path = "statistics/index.md";
+    var mkdocs_page_url = "/statistics/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Mik NET接口文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">公共配置</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../data/">数据同步</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../scans/">扫码</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../shops/">终端</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../goods/">采购订单</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../distributors/">经销商</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../salesmen/">销售员</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../users/">服务员</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">统计</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">营销员总业绩</a></li>
+    
+
+    <li class="toctree-l2"><a href="#id">根据营销员ID查询时间段业绩</a></li>
+    
+
+    <li class="toctree-l2"><a href="#id_1">根据营销员ID查询时间段滞销终端数量</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">营销员查询时间段业绩</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">营销员销售报表</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">营销员下终端扫码数</a></li>
+    
+
+    <li class="toctree-l2"><a href="#-">营销员扫码数-小程序</a></li>
+    
+
+    <li class="toctree-l2"><a href="#-_1">营销员终端扫码数-小程序</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Mik NET接口文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>统计</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h4 id="_1">营销员总业绩</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/statistics/sales?salesman_id=1,4">/statistics/sales</a></li>
+<li>状态码：200/403</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>salesman_id</td>
+<td>string</td>
+<td>是</td>
+<td>营销员ID</td>
+<td>多个用英文状态下的逗号隔开【例如：1,4】</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+    &quot;Code&quot;: 200,
+    &quot;Msg&quot;: &quot;查询成功！&quot;,
+    &quot;Info&quot;: [
+        {
+            &quot;salesman_id&quot;: &quot;6&quot;,     // 销售员ID
+            &quot;shop_count&quot;: 2,        // 终端数量
+            &quot;scan_count&quot;: 104,      // 扫码总数量
+            &quot;user_count&quot;: 8,        // 服务员数量
+            &quot;scan_money&quot;: 18543,    // 扫码总金额
+            &quot;sales_money&quot;: 465      // 销售总金额
+        }
+    ]
+}
+</code></pre>
+
+<h4 id="id">根据营销员ID查询时间段业绩</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/statistics/sales_count?salesman_id=5,6&amp;start_date=2018-01-01&amp;end_date=2018-02-02">/statistics/sales_count</a></li>
+<li>状态码：200/403</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>salesman_id</td>
+<td>string</td>
+<td>是</td>
+<td>营销员ID</td>
+<td>多个用英文状态下的逗号隔开【例如：1,4】</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>date</td>
+<td>是</td>
+<td>开始时间</td>
+<td>【2018-01-04】</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>date</td>
+<td>是</td>
+<td>结束时间</td>
+<td>【2018-01-05】</td>
+</tr>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>否</td>
+<td>页码</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>int</td>
+<td>否</td>
+<td>每页数量</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+    &quot;Code&quot;: 200,
+    &quot;Msg&quot;: &quot;查询成功！&quot;,
+    &quot;Info&quot;: [
+        {
+            &quot;scan_count&quot;: 0,        // 扫码总数量
+            &quot;scan_money&quot;: 0,        // 扫码总金额
+            &quot;sales_money&quot;: 0        // 销售总金额（使用时除以100）
+            &quot;salesman_id&quot;: &quot;5&quot;      // 营销员ID
+        }
+    ]
+}
+</code></pre>
+
+<h4 id="id_1">根据营销员ID查询时间段滞销终端数量</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/statistics/sales_date_count?salesman_id=5&amp;type=query&amp;start_date=2018-05-20&amp;end_date=2018-05-21">/statistics/sales_date_count</a></li>
+<li>状态码：200/403</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>是</td>
+<td>查询类型</td>
+<td>【query：查询, export：导出】</td>
+</tr>
+<tr>
+<td>salesman_id</td>
+<td>string</td>
+<td>是</td>
+<td>营销员ID</td>
+<td>多个用英文状态下的逗号隔开【例如：1,4】</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>date</td>
+<td>是</td>
+<td>开始时间</td>
+<td>【2018-05-20】</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>date</td>
+<td>是</td>
+<td>结束时间</td>
+<td>【2018-05-21】</td>
+</tr>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>否</td>
+<td>页码</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>int</td>
+<td>否</td>
+<td>每页数量</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+    &quot;Code&quot;: 200,
+    &quot;Msg&quot;: &quot;查询成功！&quot;,
+    &quot;Info&quot;: {
+        &quot;total&quot;: 1,                         // 总条数
+        &quot;data&quot;: [
+            {
+                &quot;total_shop_count&quot;: 17,         // 合作终端数量
+                &quot;scan_shop_count&quot;: 0,           // 扫码终端数量
+                &quot;no_scan_shop_count&quot;: 17,       // 滞销终端数量
+                &quot;total_user_count&quot;: 17,         // 服务员数
+                &quot;scan_count&quot;: 0,                // 扫码数
+                &quot;scan_user_count&quot;: 0,           // 扫码服务员数
+                &quot;statics_date&quot;: &quot;2018-05-21&quot;,   // 日期
+                &quot;salesman_id&quot;: &quot;1&quot;              // 销售员ID
+            }
+        ],
+        &quot;statics&quot;: {
+            &quot;total_shop_count&quot;: &quot;20&quot;,           // 合作终端数量总和
+            &quot;scan_shop_count&quot;: 0,               // 扫码终端数量总和
+            &quot;no_scan_shop_count&quot;: 0,           // 滞销终端数量总和
+            &quot;total_user_count&quot;: &quot;20&quot;,          // 服务员数总和
+            &quot;scan_count&quot;: 0,                    // 扫码数总和
+            &quot;scan_user_count&quot;: 0                // 扫码服务员数总和
+        }
+    }
+}
+
+</code></pre>
+
+<h4 id="_2">营销员查询时间段业绩</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/statistics/sales/section?salesman_id=1,4&amp;start_date=2018-01-15&amp;end_date=2018-01-18">/statistics/sales/section</a></li>
+<li>状态码：200/403</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>salesman_id</td>
+<td>int</td>
+<td>是</td>
+<td>营销员ID</td>
+<td></td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>date</td>
+<td>是</td>
+<td>开始时间</td>
+<td>【2018-01-04】</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>date</td>
+<td>是</td>
+<td>结束时间</td>
+<td>【2018-01-05】</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+    &quot;Code&quot;: 200,
+    &quot;Msg&quot;: &quot;查询成功！&quot;,
+    &quot;Info&quot;: [
+        {
+            &quot;date&quot;: &quot;2018-01-15&quot;,   // 日期
+            &quot;shop_count&quot;: 0,        // 终端数量
+            &quot;total_user_count&quot;: 0,  // 合作终端数量总和
+            &quot;scan_count&quot;: 0,        // 扫码总数量
+            &quot;user_count&quot;: 0,        // 服务员数量
+            &quot;total_user_count&quot;: 0,  // 合作服务员数量总和
+            &quot;scan_money&quot;: 0,        // 扫码总金额
+            &quot;sales_money&quot;: 0,        // 销售总金额
+            &quot;salesman_id&quot;: 24
+        }
+    ]
+}
+</code></pre>
+
+<h4 id="_3">营销员销售报表</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/statistics/sales_date_percent_count?end_date=2018-09-04&amp;start_date=2018-08-29&amp;type=query&amp;salesman_id=1,2,3&amp;page=1&amp;pageSize=20">/statistics/sales_date_percent_count</a></li>
+<li>状态码：200/403</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>是</td>
+<td>查询类型</td>
+<td>【query：查询, export：导出】</td>
+</tr>
+<tr>
+<td>salesman_id</td>
+<td>string</td>
+<td>是</td>
+<td>营销员ID</td>
+<td>多个用英文状态下逗号隔开【1,2,3】</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>date</td>
+<td>是</td>
+<td>开始时间</td>
+<td>【2018-09-01】</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>date</td>
+<td>是</td>
+<td>结束时间</td>
+<td>【2018-09-03】</td>
+</tr>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>否</td>
+<td>页码</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>int</td>
+<td>否</td>
+<td>每页数量</td>
+<td>【默认20条】</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+    &quot;Code&quot;: 200,
+    &quot;Msg&quot;: &quot;查询成功！&quot;,
+    &quot;Info&quot;: {
+        &quot;total&quot;: 3,                             // 总条数
+        &quot;data&quot;: [
+            {
+                &quot;statics_date&quot;: &quot;2018-09-01&quot;,   // 日期
+                &quot;scan_count&quot;: 0,                // 扫码数量
+                &quot;scan_count_percent&quot;: 0,        // 与昨日环比（扫码数）使用时除以100为百分比
+                &quot;total_shop_count&quot;: 0,          // 总计合作终端（统计启用状态）
+                &quot;shop_count&quot;: 0,                // 新增合作终端（统计启用状态）
+                &quot;scan_shop_count&quot;: 0,           // 扫码终端数（扫过码的终端数）
+                &quot;no_scan_shop_count&quot;: 0,        // 滞销终端（没有扫码的）
+                &quot;total_user_count&quot;: 0,          // 总服务员数
+                &quot;user_count&quot;: 0,                // 新增服务员数
+                &quot;scan_user_count&quot;: 0,           // 扫码服务员数
+            }
+        ]
+    }
+}
+
+</code></pre>
+
+<h4 id="_4">营销员下终端扫码数</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/statistics/scans?salesman_id=5&amp;start_date=2017-03-07%2000:00:00&amp;end_date=2018-03-19%2023:59:59">/statistics/scans</a></li>
+<li>状态码：200/403</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>是</td>
+<td>查询类型</td>
+<td>【query：查询, export：导出】</td>
+</tr>
+<tr>
+<td>salesman_id</td>
+<td>string</td>
+<td>否</td>
+<td>营销员ID</td>
+<td>多个用英文状态下的逗号隔开【例如：5,11】</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>datetime</td>
+<td>否</td>
+<td>开始时间</td>
+<td></td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>datetime</td>
+<td>否</td>
+<td>结束时间</td>
+<td></td>
+</tr>
+<tr>
+<td>shop_name</td>
+<td>string</td>
+<td>否</td>
+<td>终端名称</td>
+<td></td>
+</tr>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>否</td>
+<td>页码</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>int</td>
+<td>否</td>
+<td>每页数量</td>
+<td>【默认20条】</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+  &quot;Code&quot;: 200,
+  &quot;Msg&quot;: &quot;查询成功！&quot;,
+  &quot;Info&quot;: {
+    &quot;total&quot;: 21,
+    &quot;data&quot;: [
+      {
+        &quot;shop_id&quot;: 197,           // 终端ID
+        &quot;shop_name&quot;: &quot;dn&quot;,        // 终端名称
+        &quot;salesman_name&quot;: &quot;忘川&quot;,  // 销售员名称
+        &quot;scan_count&quot;: 0,           // 扫码数
+        &quot;salesman_id&quot;: 5,           // 销售员ID
+      }
+    ],
+    &quot;statics&quot;: {
+        &quot;scan_count&quot;: 0          // 扫码数总和
+    }
+  }
+}
+</code></pre>
+
+<h4 id="-">营销员扫码数-小程序</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/statistics/get_scan_count_by_salesman_id?salesman_id=24">/statistics/get_scan_count_by_salesman_id</a></li>
+<li>状态码：200/403</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>salesman_id</td>
+<td>string</td>
+<td>是</td>
+<td>营销员ID</td>
+<td></td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>datetime</td>
+<td>是</td>
+<td>开始时间</td>
+<td>Y-m-d H:i:s</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>datetime</td>
+<td>是</td>
+<td>结束时间</td>
+<td>Y-m-d H:i:s</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+    &quot;Code&quot;: 200,
+    &quot;Msg&quot;: &quot;查询成功！&quot;,
+    &quot;Info&quot;: {
+        &quot;salesman_id&quot;: 24,                  // 营销员ID
+        &quot;scan_count&quot;: 38,                   // 扫码数
+        &quot;salesman_name&quot;: &quot;血银&quot;             // 营销员名称
+    }
+}
+</code></pre>
+
+<h4 id="-_1">营销员终端扫码数-小程序</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/statistics/get_scan_count_by_filter">/statistics/get_scan_count_by_filter</a></li>
+<li>状态码：200/403</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>salesman_id</td>
+<td>string</td>
+<td>否</td>
+<td>营销员ID</td>
+<td></td>
+</tr>
+<tr>
+<td>shop_name</td>
+<td>string</td>
+<td>否</td>
+<td>终端名称</td>
+<td></td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>datetime</td>
+<td>否</td>
+<td>开始时间</td>
+<td>Y-m-d H:i:s</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>datetime</td>
+<td>否</td>
+<td>结束时间</td>
+<td>Y-m-d H:i:s</td>
+</tr>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>否</td>
+<td>页码</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>int</td>
+<td>否</td>
+<td>每页数量</td>
+<td>【默认20条】</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+    &quot;Code&quot;: 200,
+    &quot;Msg&quot;: &quot;查询成功！&quot;,
+    &quot;Info&quot;: {
+        &quot;data&quot;: [{
+            &quot;salesman_id&quot;: 5,                   // 营销员ID
+            &quot;shop_id&quot;: 161,                     // 终端ID
+            &quot;scan_count&quot;: 1,                    // 扫码数
+            &quot;salesman_name&quot;: &quot;忘川&quot;,            // 营销员名称
+            &quot;shop_name&quot;: &quot;烈火青春&quot;             // 终端名称
+        }],
+        &quot;statics&quot;: {
+            &quot;scan_count&quot;: 1                     // 扫码数总和
+        }
+    }
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../users/" class="btn btn-neutral" title="服务员"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../users/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

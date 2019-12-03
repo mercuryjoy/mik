@@ -1,0 +1,12 @@
+site_name: Mik NET接口文档
+theme: readthedocs
+pages:
+  - 公共配置: index.md
+  - 数据同步: data/index.md
+  - 扫码: scans/index.md
+  - 终端: shops/index.md
+  - 采购订单: goods/index.md
+  - 经销商: distributors/index.md
+  - 销售员: salesmen/index.md
+  - 服务员: users/index.md
+  - 统计: statistics/index.md

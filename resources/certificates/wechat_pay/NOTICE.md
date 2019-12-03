@@ -1,0 +1,2 @@
+每年需要更新证书文件
+从微信支付后台下载完证书后，需要把apiclient_key.pem的内容，合并到apiclient_cert.pem

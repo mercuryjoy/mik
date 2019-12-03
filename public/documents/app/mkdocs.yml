@@ -1,0 +1,11 @@
+site_name: Mik App接口文档
+theme: readthedocs
+pages:
+  - 公共配置: index.md
+  - 登录: login/index.md
+  - 版本升级: versions/index.md
+  - 采购: goods/index.md
+  - 终端: shops/index.md
+  - 支付: pays/index.md
+  - V2: v2/index.md
+  - V3: v3/index.md

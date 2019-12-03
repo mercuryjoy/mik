@@ -1,0 +1,951 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Mik API",
+        "description": "\u7c73\u5ba2\u4e4b\u5bb6API",
+        "version": "0.1"
+    },
+    "basePath": "/api",
+    "paths": {
+        "/app/versions": {
+            "get": {
+                "tags": [
+                    "Version"
+                ],
+                "summary": "APP\u7248\u672c\u5347\u7ea7",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/feedbacks": {
+            "post": {
+                "tags": [
+                    "Feedback"
+                ],
+                "summary": "\u53d1\u9001\u53cd\u9988",
+                "parameters": [
+                    {
+                        "name": "content",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/goods/items": {
+            "get": {
+                "tags": [
+                    "Goods Item"
+                ],
+                "summary": "\u83b7\u53d6\u6240\u6709\u91c7\u8d2d\u5546\u54c1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u91c7\u8d2d\u5546\u54c1\u83b7\u53d6\u6210\u529f"
+                    },
+                    "500": {
+                        "description": "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef"
+                    }
+                }
+            }
+        },
+        "/goods/orders": {
+            "get": {
+                "tags": [
+                    "Goods Order"
+                ],
+                "summary": "\u83b7\u53d6\u6240\u6709\u91c7\u8d2d\u8ba2\u5355",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u91c7\u8d2d\u5546\u54c1\u83b7\u53d6\u6210\u529f"
+                    },
+                    "500": {
+                        "description": "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Goods Order"
+                ],
+                "summary": "\u65b0\u5efa\u91c7\u8d2d\u8ba2\u5355",
+                "parameters": [
+                    {
+                        "name": "item_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "contact_name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "contact_phone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipping_address",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u5e97\u957f\u6240\u6709\u91c7\u8d2d\u8ba2\u5355"
+                    }
+                }
+            }
+        },
+        "/goods/orders/show": {
+            "get": {
+                "tags": [
+                    "Goods Order"
+                ],
+                "summary": "\u83b7\u53d6\u91c7\u8d2d\u8ba2\u5355\u8be6\u60c5",
+                "parameters": [
+                    {
+                        "name": "order_id",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u91c7\u8d2d\u5546\u54c1\u83b7\u53d6\u6210\u529f"
+                    },
+                    "500": {
+                        "description": "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef"
+                    }
+                }
+            }
+        },
+        "/goods/orders/cancel": {
+            "post": {
+                "tags": [
+                    "Goods Order"
+                ],
+                "summary": "\u53d6\u6d88\u91c7\u8d2d\u8ba2\u5355",
+                "parameters": [
+                    {
+                        "name": "order_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u670d\u52a1\u5458\u6240\u6709\u91c7\u8d2d\u8ba2\u5355"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "\u9a8c\u8bc1\u7528\u6237\u767b\u5f55",
+                "parameters": [
+                    {
+                        "name": "telephone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "code",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u767b\u5f55\u6210\u529f",
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "telephone": {
+                                    "type": "string"
+                                },
+                                "shop_id": {
+                                    "type": "integer"
+                                },
+                                "area_id": {
+                                    "type": "integer"
+                                },
+                                "deleted_at": {
+                                    "type": "string"
+                                },
+                                "created_at": {
+                                    "type": "string"
+                                },
+                                "updated_at": {
+                                    "type": "string"
+                                },
+                                "token": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/news": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "\u83b7\u53d6\u6240\u6709\u65b0\u95fb",
+                "responses": {
+                    "200": {
+                        "description": "\u8bbe\u7f6e\u83b7\u53d6\u6210\u529f"
+                    },
+                    "500": {
+                        "description": "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef"
+                    }
+                }
+            }
+        },
+        "/pays": {
+            "get": {
+                "tags": [
+                    "Pays"
+                ],
+                "summary": "\u83b7\u53d6\u652f\u4ed8\u65b9\u5f0f",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/sms/code": {
+            "post": {
+                "tags": [
+                    "SMS"
+                ],
+                "summary": "\u53d1\u9001\u9a8c\u8bc1\u77ed\u4fe1",
+                "parameters": [
+                    {
+                        "name": "telephone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u53d1\u9001\u77ed\u4fe1\u8ba4\u8bc1\u7801"
+                    }
+                }
+            }
+        },
+        "/scans/logs": {
+            "get": {
+                "tags": [
+                    "Scan Log"
+                ],
+                "summary": "\u7ec8\u7aef\u7684\u6838\u9500\u8bb0\u5f55",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "\u9875\u7801",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "\u6bcf\u9875\u663e\u793a\u6570\u91cf",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "301": {
+                        "description": "\u5e10\u53f7\u672a\u901a\u8fc7\u5ba1\u6838\u4e0d\u80fd\u67e5\u770b"
+                    },
+                    "400": {
+                        "description": "\u670d\u52a1\u5458\u6ca1\u6709\u6240\u5c5e\u7ec8\u7aef"
+                    }
+                }
+            }
+        },
+        "/scans": {
+            "post": {
+                "tags": [
+                    "Scan Log"
+                ],
+                "summary": "\u4e0a\u4f20\u626b\u63cf\u4e8c\u7ef4\u7801\u4fe1\u606f",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "version",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u4e0a\u4f20\u626b\u63cf\u4e8c\u7ef4\u7801\u4fe1\u606f\u6210\u529f"
+                    },
+                    "400": {
+                        "description": "\u5ba2\u6237\u7aef\u8bf7\u6c42\u6709\u8bef"
+                    },
+                    "500": {
+                        "description": "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef"
+                    }
+                }
+            }
+        },
+        "/users/{user}/scans": {
+            "get": {
+                "tags": [
+                    "Scan Log"
+                ],
+                "summary": "\u83b7\u53d6\u670d\u52a1\u5458\u6240\u6709\u626b\u7801\u8bb0\u5f55",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u626b\u7801\u8bb0\u5f55\u83b7\u53d6\u6210\u529f"
+                    },
+                    "500": {
+                        "description": "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef"
+                    }
+                }
+            }
+        },
+        "/scans/rank": {
+            "get": {
+                "tags": [
+                    "Scan Log"
+                ],
+                "summary": "\u6bd4\u4e00\u6bd4",
+                "parameters": [
+                    {
+                        "name": "datefrom",
+                        "in": "query",
+                        "description": "e.g. 2015-12-10",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dateto",
+                        "in": "query",
+                        "description": "e.g. 2016-12-10",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "areaid",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u6bd4\u4e00\u6bd4\u8bb0\u5f55\u83b7\u53d6\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/settings": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "\u83b7\u53d6\u6240\u6709\u8bbe\u7f6e",
+                "responses": {
+                    "200": {
+                        "description": "\u8bbe\u7f6e\u83b7\u53d6\u6210\u529f"
+                    },
+                    "500": {
+                        "description": "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef"
+                    }
+                }
+            }
+        },
+        "/shops": {
+            "get": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": "\u83b7\u53d6\u5341\u4e2a\u7ec8\u7aef,\u6216\u8005\u641c\u7d22\u7ec8\u7aef",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u641c\u7d22\u9910\u5385"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": "\u6dfb\u52a0\u65b0\u7ec8\u7aef",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "distributor_id",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "area_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u6dfb\u52a0\u65b0\u9910\u5385"
+                    }
+                }
+            }
+        },
+        "/store/items": {
+            "get": {
+                "tags": [
+                    "Store Item"
+                ],
+                "summary": "\u83b7\u53d6\u6240\u6709\u5546\u57ce\u5546\u54c1",
+                "responses": {
+                    "200": {
+                        "description": "\u5546\u57ce\u5546\u54c1\u83b7\u53d6\u6210\u529f"
+                    },
+                    "500": {
+                        "description": "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef"
+                    }
+                }
+            }
+        },
+        "/store/orders": {
+            "post": {
+                "tags": [
+                    "Store Order"
+                ],
+                "summary": "\u65b0\u5efa\u8ba2\u5355",
+                "parameters": [
+                    {
+                        "name": "item_id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "shipping_address",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u670d\u52a1\u5458\u6240\u6709\u5546\u57ce\u8ba2\u5355"
+                    }
+                }
+            }
+        },
+        "/store/users/{user}/orders": {
+            "get": {
+                "tags": [
+                    "Store Order"
+                ],
+                "summary": "\u83b7\u53d6\u5f53\u524d\u670d\u52a1\u5458\u6240\u6709\u5546\u57ce\u8ba2\u5355",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u670d\u52a1\u5458\u6240\u6709\u5546\u57ce\u8ba2\u5355"
+                    }
+                }
+            }
+        },
+        "/test/withdraw": {
+            "post": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "\u6d4b\u8bd5\u63d0\u73b0",
+                "parameters": [
+                    {
+                        "name": "openid",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u670d\u52a1\u5458\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/test/noti": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "\u6d4b\u8bd5\u667a\u80fd\u63d0\u9192",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/@me": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\u83b7\u53d6\u5f53\u524d\u670d\u52a1\u5458\u4fe1\u606f",
+                "responses": {
+                    "200": {
+                        "description": "\u670d\u52a1\u5458\u6570\u636e",
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "telephone": {
+                                    "type": "string"
+                                },
+                                "shop_id": {
+                                    "type": "integer"
+                                },
+                                "deleted_at": {
+                                    "type": "string"
+                                },
+                                "created_at": {
+                                    "type": "string"
+                                },
+                                "updated_at": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\u4fee\u6539\u5f53\u524d\u670d\u52a1\u5458\u4fe1\u606f",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "shop_id",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "telephone",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "wechat_openid",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "wechat_unionid",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "wechat_name",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "wechat_avatar",
+                        "in": "formData",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7528\u6237\u6570\u636e",
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "telephone": {
+                                    "type": "string"
+                                },
+                                "shop_id": {
+                                    "type": "integer"
+                                },
+                                "deleted_at": {
+                                    "type": "string"
+                                },
+                                "created_at": {
+                                    "type": "string"
+                                },
+                                "updated_at": {
+                                    "type": "string"
+                                },
+                                "token": {
+                                    "type": "string"
+                                },
+                                "wechat_unionid": {
+                                    "type": "string"
+                                },
+                                "wechat_name": {
+                                    "type": "string"
+                                },
+                                "wechat_avatar": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/@me/statics": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\u83b7\u53d6\u5f53\u524d\u670d\u52a1\u5458\u7edf\u8ba1\u4fe1\u606f",
+                "parameters": [
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u670d\u52a1\u5458\u7edf\u8ba1\u6570\u636e",
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/withdraw": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\u7528\u6237\u63d0\u73b0",
+                "parameters": [
+                    {
+                        "name": "amount",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u63d0\u73b0\u8bb0\u5f55"
+                    }
+                }
+            }
+        },
+        "/exchange": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\u5c06\u7ea2\u5305\u4f59\u989d\u8f6c\u6362\u4e3a\u79ef\u5206",
+                "parameters": [
+                    {
+                        "name": "amount",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8f6c\u6362\u6210\u529f"
+                    }
+                }
+            }
+        },
+        "/wallet/log": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "\u7528\u6237\u94b1\u5305\u53d8\u52a8\u8bb0\u5f55",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7528\u6237\u94b1\u5305\u53d8\u52a8\u8bb0\u5f55"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {},
+    "tags": [
+        {
+            "name": "Version",
+            "description": "\u7248\u672c\u5347\u7ea7"
+        },
+        {
+            "name": "Feedback",
+            "description": "\u7528\u6237\u53cd\u9988"
+        },
+        {
+            "name": "Extra Item",
+            "description": "\u91c7\u8d2d\u5546\u54c1"
+        },
+        {
+            "name": "Goods Order",
+            "description": "\u91c7\u8d2d\u8ba2\u5355"
+        },
+        {
+            "name": "Auth",
+            "description": "\u8eab\u4efd\u9a8c\u8bc1"
+        },
+        {
+            "name": "News",
+            "description": "\u65b0\u95fb"
+        },
+        {
+            "name": "Pays",
+            "description": "\u652f\u4ed8\u65b9\u5f0f"
+        },
+        {
+            "name": "SMS",
+            "description": "\u77ed\u4fe1\u9a8c\u8bc1"
+        },
+        {
+            "name": "Scan Log",
+            "description": "\u626b\u7801\u8bb0\u5f55"
+        },
+        {
+            "name": "Settings",
+            "description": "\u8bbe\u7f6e"
+        },
+        {
+            "name": "Shop",
+            "description": "\u7ec8\u7aef"
+        },
+        {
+            "name": "Store Item",
+            "description": "\u5546\u57ce\u5546\u54c1"
+        },
+        {
+            "name": "Store Order",
+            "description": "\u5546\u57ce\u8ba2\u5355"
+        },
+        {
+            "name": "Test",
+            "description": "\u6d4b\u8bd5"
+        },
+        {
+            "name": "User",
+            "description": "\u670d\u52a1\u5458"
+        },
+        {
+            "name": "Auth",
+            "description": "\u8eab\u4efd\u9a8c\u8bc1"
+        }
+    ]
+}

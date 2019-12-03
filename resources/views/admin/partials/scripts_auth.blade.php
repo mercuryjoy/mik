@@ -1,0 +1,1 @@
+<script src="{{ asset('/js/vendor.js') }}" type="text/javascript"></script>

@@ -1,0 +1,112 @@
+@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/lato-medium.eot');
+  src: local('Lato Medium'),
+       local('Lato-Medium'),
+       url('../fonts/lato-medium.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/lato-medium.woff2') format('woff2'),
+       url('../fonts/llato-medium.woff') format('woff'),
+       url('../fonts/llato-medium.ttf') format('truetype'),
+       url('../fonts/llato-medium.svg#lato') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+body {
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #767676;
+  background-color: #f3f3f3;
+  margin: 0;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+
+  #content {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    animation: fadeInUp 0.5s ease;
+
+    .page-err {
+      width: 100%;
+      height: 100%;
+      background-color: #1f8dd1;
+
+      .text-center {
+        text-align: center;
+
+        .err-status {
+          background-color: #f3f3f3;
+
+          h1 {
+            margin: 100px 0 -45px;
+            color: #1C7EBB;
+            font-size: 200px;
+            font-weight: 500;
+            line-height: 1.1;
+          }
+        }
+
+        .err-message {
+          width: 100%;
+          height: 100%;
+          text-transform: uppercase;
+          padding: 24px;
+          background-color: #1C7EBB;
+
+          h2 {
+            font-size: 50px;
+            color: #fff;
+            font-weight: 300;
+            font-family: inherit;
+            line-height: 1.1;
+            margin-top: 20px;
+            margin-bottom: 10px;
+          }
+        }
+
+        .err-body {
+          padding: 100px 10px 20px;
+
+          .btn-goback {
+            color: #fff;
+            background-color: transparent;
+            border-color: #fff;
+            border-radius: 2px;
+
+            &:hover {
+              color: #1f8dd1;
+              background-color: #fff;
+            }
+
+            .space {
+              display: inline;
+              padding: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

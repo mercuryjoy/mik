@@ -1,0 +1,11 @@
+{
+  "name": "admin",
+  "dependencies": {
+    "AdminLTE": "admin-lte#~2.3.2",
+    "font-awesome": "fontawesome#~4.5.0",
+    "Ionicons": "ionicons#~2.0.1",
+    "iCheck": "~1.0.2",
+    "lato": "~0.3.0",
+    "jsrender": "~0.9.72"
+  }
+}

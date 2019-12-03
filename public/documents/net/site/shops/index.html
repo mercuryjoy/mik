@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>终端 - Mik NET接口文档</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7ec8\u7aef";
+    var mkdocs_page_input_path = "shops/index.md";
+    var mkdocs_page_url = "/shops/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Mik NET接口文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">公共配置</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../data/">数据同步</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../scans/">扫码</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">终端</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">终端列表</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">新建终端 &amp;&amp; 修改终端</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">检查终端名称是否存在</a></li>
+    
+
+    <li class="toctree-l2"><a href="#id">通过终端ID查询详情</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../goods/">采购订单</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../distributors/">经销商</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../salesmen/">销售员</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../users/">服务员</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../statistics/">统计</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Mik NET接口文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>终端</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h4 id="_1">终端列表</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/shops">/shops</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>否</td>
+<td>页码</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>int</td>
+<td>否</td>
+<td>每页数量</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">[{
+    &quot;id&quot;: 205,
+    &quot;name&quot;: &quot;5&quot;,
+    &quot;level&quot;: &quot;D&quot;,
+    &quot;distributor_id&quot;: null,
+    &quot;area_id&quot;: 110000,
+    &quot;address&quot;: &quot;但是发到付&quot;,
+    &quot;salesman_id&quot;: 0,
+    &quot;deleted_at&quot;: null,
+    &quot;created_at&quot;: &quot;2018-01-11 19:00:57&quot;,
+    &quot;updated_at&quot;: &quot;2018-01-11 19:00:57&quot;,
+    &quot;logo&quot;: &quot;&quot;,
+    &quot;owner_id&quot;: 0,
+    &quot;contact_person&quot;: &quot;&quot;,
+    &quot;contact_phone&quot;: &quot;&quot;,
+    &quot;category_id&quot;: 0,
+    &quot;per_consume&quot;: &quot;0.00&quot;
+}]
+</code></pre>
+
+<h4 id="_2">新建终端 &amp;&amp; 修改终端</h4>
+<ul>
+<li>描述：<code>POST</code>   <a href="http://app-dev.mikwine.com/net/shops">/shops</a></li>
+<li>状态码：200/400/403</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>否</td>
+<td>PHP终端ID</td>
+<td>修改时传</td>
+</tr>
+<tr>
+<td>net_shop_id</td>
+<td>int</td>
+<td>是</td>
+<td>net终端ID</td>
+<td>新增时传</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>是</td>
+<td>终端名称</td>
+<td></td>
+</tr>
+<tr>
+<td>distributor_id</td>
+<td>int</td>
+<td>否</td>
+<td>经销商ID</td>
+<td></td>
+</tr>
+<tr>
+<td>area_id</td>
+<td>int</td>
+<td>是</td>
+<td>地区ID</td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>是</td>
+<td>地址</td>
+<td></td>
+</tr>
+<tr>
+<td>salesman_id</td>
+<td>int</td>
+<td>是</td>
+<td>销售员ID</td>
+<td></td>
+</tr>
+<tr>
+<td>contact_phone</td>
+<td>string</td>
+<td>是</td>
+<td>联系电话</td>
+<td></td>
+</tr>
+<tr>
+<td>category_id</td>
+<td>int</td>
+<td>是</td>
+<td>餐饮类别ID</td>
+<td></td>
+</tr>
+<tr>
+<td>per_consume</td>
+<td>float</td>
+<td>是</td>
+<td>人均消费</td>
+<td></td>
+</tr>
+<tr>
+<td>logo</td>
+<td>string</td>
+<td>是</td>
+<td>终端展示图</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+    &quot;Code&quot;: 200,          // 【200：成功，400失败,403：报错信息】
+    &quot;Msg&quot;: &quot;终端创建成功&quot;,
+    &quot;Info&quot;: {
+        &quot;id&quot;: 212
+    }
+}
+</code></pre>
+
+<h4 id="_3">检查终端名称是否存在</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/shops/check">/shops/check</a></li>
+<li>状态码：200/403/400</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shop_name</td>
+<td>string</td>
+<td>是</td>
+<td>终端名称</td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>否</td>
+<td>地址</td>
+<td>【暂不判断，可不传】</td>
+</tr>
+<tr>
+<td>distributor_name</td>
+<td>string</td>
+<td>否</td>
+<td>经销商名称</td>
+<td>【暂不判断，可不传】</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+   &quot;Code&quot;: 200,
+   &quot;Msg&quot;: &quot;终端不存在&quot;,
+   &quot;Info&quot;: null
+}
+</code></pre>
+
+<h4 id="id">通过终端ID查询详情</h4>
+<ul>
+<li>描述：<code>GET</code>   <a href="http://app-dev.mikwine.com/net/shops/show?shop_id=1,2,3">/shops/show</a></li>
+<li>状态码：200/403</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必传</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shop_id</td>
+<td>string</td>
+<td>是</td>
+<td>终端ID</td>
+<td>多个用英文状态下的逗号隔开【例如：1,2】</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="json">{
+    &quot;Code&quot;: 200,
+    &quot;Msg&quot;: &quot;查询成功&quot;,
+    &quot;Info&quot;: [
+        {
+            &quot;id&quot;: 1,                              // 终端ID
+            &quot;name&quot;: &quot;米客测试终端浙江&quot;,              // 终端名称
+            &quot;area_id&quot;: 330100,                    // 终端地区代码
+            &quot;address&quot;: &quot;浙江省杭州江干区解放东路58号&quot;,// 终端地址
+            &quot;contact_person&quot;: &quot;2&quot;,                // 联系人
+            &quot;contact_phone&quot;: &quot;15921414715&quot;,       // 联系电话
+            &quot;per_consume&quot;: &quot;20.00&quot;,               // 人均消费
+            &quot;area&quot;: {
+                &quot;display&quot;: &quot;浙江 杭州&quot;             // 地区名称
+            },
+            &quot;distributor&quot;: {
+                &quot;name&quot;: &quot;经销商voluptatem&quot;        // 经销商名称
+            },
+            &quot;category&quot;: {
+                &quot;name&quot;: &quot;米客米酒&quot;               // 经销商名称
+            },
+            &quot;salesman&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;黄芳&quot;                  // 销售员
+            }
+        }
+    ]
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../goods/" class="btn btn-neutral float-right" title="采购订单">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../scans/" class="btn btn-neutral" title="扫码"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../scans/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../goods/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
